@@ -509,8 +509,8 @@ document.addEventListener("DOMContentLoaded", function() {
           metric: VA_MESSAGE.data[i * numMeasures + j][1],
           measure: VA_MESSAGE.data[i * numMeasures + j][2],
           scaledMeasure:
-            VA_MESSAGE.data[i * numMeasures + j][2] / maxOfMax;
-            //METADATA.metrics[VA_MESSAGE.data[i * numMeasures + j][1]].maximum
+            VA_MESSAGE.data[i * numMeasures + j][2] / // maxOfMax;
+            METADATA.metrics[VA_MESSAGE.data[i * numMeasures + j][1]].maximum
         };
 
         datum.metrics.push(metric);
