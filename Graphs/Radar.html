@@ -484,12 +484,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Calculate the maximum of all metrics
-    //let maxOfMax = Number.MIN_VALUE;
-    //for (const key in METADATA.metrics) {
-    //  if (METADATA.metrics[key].maximum > maxOfMax) {
-    //    maxOfMax = METADATA.metrics[key].maximum;
-    //  }
-    //}
+    let maxOfMax = Number.MIN_VALUE;
+    for (const key in METADATA.metrics) {
+      if (METADATA.metrics[key].maximum > maxOfMax) {
+        maxOfMax = METADATA.metrics[key].maximum;
+      }
+    }
     
     // Restructure data from 2d array to array of objects
     let datum, metric;
@@ -509,8 +509,8 @@ document.addEventListener("DOMContentLoaded", function() {
           metric: VA_MESSAGE.data[i * numMeasures + j][1],
           measure: VA_MESSAGE.data[i * numMeasures + j][2],
           scaledMeasure:
-            VA_MESSAGE.data[i * numMeasures + j][2] / // maxOfMax;
-            METADATA.metrics[VA_MESSAGE.data[i * numMeasures + j][1]].maximum
+            VA_MESSAGE.data[i * numMeasures + j][2] / maxOfMax
+            //METADATA.metrics[VA_MESSAGE.data[i * numMeasures + j][1]].maximum
         };
 
         datum.metrics.push(metric);
