@@ -469,8 +469,13 @@ document.addEventListener("DOMContentLoaded", function() {
   // Take action on received data
   function onDataReceived(messageFromVA) {
     // Initialize data variables
-    VA_MESSAGE = messageFromVA;
-    VA_RESULT_NAME = messageFromVA.resultName;
+    if (messageFromVA.length = 0)
+    {
+      VA_MESSAGE = EMPTY_MESSAGE;
+    } else {
+      VA_MESSAGE = messageFromVA;
+      VA_RESULT_NAME = messageFromVA.resultName;
+    }
 
     // Validate data roles
     if (
@@ -584,8 +589,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function drawElements() {
     // Return if data is not yet initialized
     if (!DATA) {
-      DATA = EMPTY_MESSAGE;
-      //return;
+      return;
     }
 
     // Calculate dimensions for graph based on container dimensions
