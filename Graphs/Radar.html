@@ -468,10 +468,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Take action on received data
   function onDataReceived(messageFromVA) {
+    // Check whether VA is sending any data
+    const testNestedData = d3
+      .nest()
+      .key(function(d) {
+        return d[1];
+      })
+      .entries(messageFromVA.data);
     // Initialize data variables
-    if (messageFromVA.length = 0)
+    if (testNestedData.length = 0)
     {
       VA_MESSAGE = EMPTY_MESSAGE;
+      VA_RESULT_NAME = messageFromVA.resultName;
     } else {
       VA_MESSAGE = messageFromVA;
       VA_RESULT_NAME = messageFromVA.resultName;
