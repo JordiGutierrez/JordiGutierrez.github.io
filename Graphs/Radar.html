@@ -244,6 +244,47 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     ]
   }; // Sample data message to render graph outside of VA for debugging
+
+  const EMPTY_MESSAGE = {
+    version: "1",
+    resultName: "dd55",
+    rowCount: 1,
+    availableRowCount: 1,
+    data: [
+      ["Sin informacion", "Sin informacion", 100, "BEST12.2"]
+    ],
+    columns: [
+      {
+        name: "bi173",
+        label: "Type",
+        type: "string"
+      },
+      {
+        name: "bi174",
+        label: "Metric",
+        type: "string"
+      },
+      {
+        name: "bi175",
+        label: "Measure",
+        type: "number",
+        usage: "quantitative",
+        aggregation: "sum",
+        format: {
+          name: "BEST",
+          width: 12,
+          precision: 0,
+          formatString: "BEST12."
+        }
+      },
+      {
+        name: "bi176",
+        label: "Format",
+        type: "string"
+      }
+    ]
+  }; // Data to show when SAS is not sending any data
+
   const OPACITY = {
     fill: {
       focus: 0.6,
@@ -543,7 +584,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function drawElements() {
     // Return if data is not yet initialized
     if (!DATA) {
-      return;
+      DATA = EMPTY_MESSAGE;
+      //return;
     }
 
     // Calculate dimensions for graph based on container dimensions
