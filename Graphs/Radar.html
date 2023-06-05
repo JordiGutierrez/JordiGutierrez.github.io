@@ -194,22 +194,22 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 18,
     availableRowCount: 18,
     data: [
-      ["Hybrid", "Category 0x0D0A 4", 70, "BEST12.2"],
+      ["Hybrid", "Category \n 4", 70, "BEST12.2"],
       ["Hybrid", "Category 2", 55, "BEST12.2"],
       ["Hybrid", "Category 3", 90, "BEST12.2"],
-      ["Sedan", "Category 0x0D0A 4", 65, "BEST12.2"],
+      ["Sedan", "Category \n 4", 65, "BEST12.2"],
       ["Sedan", "Category 2", 38, "BEST12.2"],
       ["Sedan", "Category 3", 127, "BEST12.2"],
-      ["Sports", "Category 0x0D0A 4", 23, "BEST12.2"],
+      ["Sports", "Category \n 4", 23, "BEST12.2"],
       ["Sports", "Category 2", 18, "BEST12.2"],
       ["Sports", "Category 3", 53, "BEST12.2"],
-      ["SUV", "Category 0x0D0A 4", 67, "BEST12.2"],
+      ["SUV", "Category \n 4", 67, "BEST12.2"],
       ["SUV", "Category 2", 16, "BEST12.2"],
       ["SUV", "Category 3", 34, "BEST12.2"],
-      ["Truck", "Category 0x0D0A 4", 68, "BEST12.2"],
+      ["Truck", "Category \n 4", 68, "BEST12.2"],
       ["Truck", "Category 2", 16, "BEST12.2"],
       ["Truck", "Category 3", 24, "BEST12.2"],
-      ["Wagon", "Category 0x0D0A 4", 53, "BEST12.2"],
+      ["Wagon", "Category \n 4", 53, "BEST12.2"],
       ["Wagon", "Category 2", 21, "BEST12.2"],
       ["Wagon", "Category 3", 28, "BEST12.2"]
     ],
@@ -476,14 +476,8 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       .entries(messageFromVA.data);
     // Initialize data variables
-    if (testNestedData.length = 0)
-    {
-      VA_MESSAGE = EMPTY_MESSAGE;
-      VA_RESULT_NAME = messageFromVA.resultName;
-    } else {
-      VA_MESSAGE = messageFromVA;
-      VA_RESULT_NAME = messageFromVA.resultName;
-    }
+    VA_MESSAGE = messageFromVA;
+    VA_RESULT_NAME = messageFromVA.resultName;
 
     // Validate data roles
     if (
