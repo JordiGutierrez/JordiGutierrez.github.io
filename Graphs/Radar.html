@@ -1418,7 +1418,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let titleHeight;
     SVG.append("text")
       .classed("legend-text", true)
-      .text("TEST")
+      .html("TEST")
       .each(function() {
         titleHeight = this.getBBox().height;
         this.remove();
@@ -1432,7 +1432,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("legend-text", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.key;
       })
       .style("font-weight", "bold")
@@ -1507,7 +1507,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("legend-title", true)
-      .text(function(d) {
+      .html(function(d) {
         return d;
       })
       .merge(LEG.titleDataJoin)
@@ -1557,7 +1557,7 @@ document.addEventListener("DOMContentLoaded", function() {
     LEG.groupDataJoin
       .append("text")
       .classed("legend-text", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.key;
       })
       .attr("x", LEG.rectWidth + LEG.rectPad)
@@ -1638,7 +1638,7 @@ document.addEventListener("DOMContentLoaded", function() {
     enter
       .append("text")
       .classed("legend-text", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.key;
       })
       .attr("x", LEG.rectWidth + LEG.rectPad)
