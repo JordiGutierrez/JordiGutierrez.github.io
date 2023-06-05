@@ -469,9 +469,16 @@ document.addEventListener("DOMContentLoaded", function() {
   // Take action on received data
   function onDataReceived(messageFromVA) {
     // Initialize data variables
-    VA_MESSAGE = messageFromVA;
-    VA_RESULT_NAME = messageFromVA.resultName;
-    //VA_MESSAGE = EMPTY_MESSAGE;
+    SELECTED = va.contentUtil.initializeSelections(messageFromVA);
+    if (SELECTED.length > 0)
+    {
+      VA_MESSAGE = messageFromVA;
+      VA_RESULT_NAME = messageFromVA.resultName;
+    }
+    else
+    {
+      VA_MESSAGE = EMPTY_MESSAGE;
+    }
 
     // Validate data roles
     if (
