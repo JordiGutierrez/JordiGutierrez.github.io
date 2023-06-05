@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 1,
     availableRowCount: 1,
     data: [
-      ["Sin datos 1", "Sin datos 1", 100, "BEST12.2"]
+      ["Sin informacion", "Sin informacion", 100, "BEST12.2"]
     ],
     columns: [
       {
@@ -469,22 +469,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Take action on received data
   function onDataReceived(messageFromVA) {
     // Initialize data variables
-    const testNestedData = d3
-      .nest()
-      .key(function(d) {
-        return d[1];
-      })
-      .entries(messageFromVA);
-    const tesNumMeasures = testNestedData.length;
-    if (testNumMeasures == 0)
-    {
-      VA_MESSAGE = EMPTY_MESSAGE;
-    }
-    else
-    {
-      VA_MESSAGE = messageFromVA;
-      VA_RESULT_NAME = messageFromVA.resultName;
-    }
+    VA_MESSAGE = messageFromVA;
+    VA_RESULT_NAME = messageFromVA.resultName;
 
     // Validate data roles
     if (
@@ -598,7 +584,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function drawElements() {
     // Return if data is not yet initialized
     if (!DATA) {
-      return;
+      DATA = EMPTY_MESSAGE;
+      //return;
     }
 
     // Calculate dimensions for graph based on container dimensions
@@ -619,7 +606,7 @@ document.addEventListener("DOMContentLoaded", function() {
           .tip()
           .attr("class", "d3-tip")
           .offset([-8, 0])
-          .text(function(d) {
+          .html(function(d) {
             return (
               "<table class='d3-tip-content'> <tr> <td> " +
               METADATA.category +
