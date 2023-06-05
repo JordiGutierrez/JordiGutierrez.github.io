@@ -469,7 +469,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Take action on received data
   function onDataReceived(messageFromVA) {
     // Initialize data variables
-    SELECTED = va.contentUtil.initializeSelections(messageFromVA);
+    TempMessage = messageFromVA;
+    SELECTED = va.contentUtil.initializeSelections(TempMessage);
     if (SELECTED.length > 0)
     {
       VA_MESSAGE = messageFromVA;
