@@ -194,22 +194,22 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 18,
     availableRowCount: 18,
     data: [
-      ["Hybrid", "Category \n\r 5", 70, "BEST12.2"],
+      ["Hybrid", "Category 1", 70, "BEST12.2"],
       ["Hybrid", "Category 2", 55, "BEST12.2"],
       ["Hybrid", "Category 3", 90, "BEST12.2"],
-      ["Sedan", "Category \n\r 5", 65, "BEST12.2"],
+      ["Sedan", "Category 1", 65, "BEST12.2"],
       ["Sedan", "Category 2", 38, "BEST12.2"],
       ["Sedan", "Category 3", 127, "BEST12.2"],
-      ["Sports", "Category \n\r 5", 23, "BEST12.2"],
+      ["Sports", "Category 1", 23, "BEST12.2"],
       ["Sports", "Category 2", 18, "BEST12.2"],
       ["Sports", "Category 3", 53, "BEST12.2"],
-      ["SUV", "Category \n\r 5", 67, "BEST12.2"],
+      ["SUV", "Category 1", 67, "BEST12.2"],
       ["SUV", "Category 2", 16, "BEST12.2"],
       ["SUV", "Category 3", 34, "BEST12.2"],
-      ["Truck", "Category \n\r 5", 68, "BEST12.2"],
+      ["Truck", "Category 1", 68, "BEST12.2"],
       ["Truck", "Category 2", 16, "BEST12.2"],
       ["Truck", "Category 3", 24, "BEST12.2"],
-      ["Wagon", "Category \n\r 5", 53, "BEST12.2"],
+      ["Wagon", "Category 1", 53, "BEST12.2"],
       ["Wagon", "Category 2", 21, "BEST12.2"],
       ["Wagon", "Category 3", 28, "BEST12.2"]
     ],
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 1,
     availableRowCount: 1,
     data: [
-      ["Sin <br/> datos 4", "Sin <br/> datos 4", 100, "BEST12.2"]
+      ["Sin datos 1", "Sin datos 1", 100, "BEST12.2"]
     ],
     columns: [
       {
@@ -445,8 +445,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // If not being rendered in iFrame (outside VA), render with sample data
   if (!inIframe()) {
-    //onDataReceived(SAMPLE_MESSAGE);
-    onDataReceived(EMPTY_MESSAGE);
+    onDataReceived(SAMPLE_MESSAGE);
   }
 
   // Listen for resize event
@@ -469,16 +468,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Take action on received data
   function onDataReceived(messageFromVA) {
-    // Check whether VA is sending any data
+    // Initialize data variables
     const testNestedData = d3
       .nest()
       .key(function(d) {
         return d[1];
       })
-      .entries(messageFromVA.data);
-    // Initialize data variables
-    VA_MESSAGE = messageFromVA;
-    VA_RESULT_NAME = messageFromVA.resultName;
+      .entries(messageFromVA);
+    const tesNumMeasures = testNestedData.length;
+    if (testNumMeasures == 0)
+    {
+      VA_MESSAGE = EMPTY_MESSAGE;
+      VA_RESULT_NAME = EMPTY_MESSAGE.resultName;
+    }
+    else
+    {
+      VA_MESSAGE = messageFromVA;
+      VA_RESULT_NAME = messageFromVA.resultName;
+    }
 
     // Validate data roles
     if (
@@ -613,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function() {
           .tip()
           .attr("class", "d3-tip")
           .offset([-8, 0])
-          .html(function(d) {
+          .text(function(d) {
             return (
               "<table class='d3-tip-content'> <tr> <td> " +
               METADATA.category +
@@ -742,7 +749,7 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.metric;
       })
       .attr("data-angle", function(d) {
@@ -1003,7 +1010,7 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.metric;
       })
       .attr("dx", function(d) {
@@ -1418,7 +1425,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let titleHeight;
     SVG.append("text")
       .classed("legend-text", true)
-      .html("TEST")
+      .text("TEST")
       .each(function() {
         titleHeight = this.getBBox().height;
         this.remove();
@@ -1432,7 +1439,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("legend-text", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.key;
       })
       .style("font-weight", "bold")
@@ -1507,7 +1514,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("legend-title", true)
-      .html(function(d) {
+      .text(function(d) {
         return d;
       })
       .merge(LEG.titleDataJoin)
@@ -1557,7 +1564,7 @@ document.addEventListener("DOMContentLoaded", function() {
     LEG.groupDataJoin
       .append("text")
       .classed("legend-text", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.key;
       })
       .attr("x", LEG.rectWidth + LEG.rectPad)
@@ -1638,7 +1645,7 @@ document.addEventListener("DOMContentLoaded", function() {
     enter
       .append("text")
       .classed("legend-text", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.key;
       })
       .attr("x", LEG.rectWidth + LEG.rectPad)
@@ -1755,7 +1762,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("measure-label", true)
-      .html(function(d) {
+      .text(function(d) {
         return d.metric;
       })
       .each(function() {
