@@ -742,7 +742,7 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.metric;
       })
       .attr("data-angle", function(d) {
@@ -1755,7 +1755,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .enter()
       .append("text")
       .classed("measure-label", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.metric;
       })
       .each(function() {
