@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 1,
     availableRowCount: 1,
     data: [
-      ["Sin \n datos 1", "Sin \n datos", 100, "BEST12.2"]
+      ["Sin <br/> datos 2", "Sin <br/> datos", 100, "BEST12.2"]
     ],
     columns: [
       {
@@ -1003,7 +1003,7 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .text(function(d) {
+      .html(function(d) {
         return d.metric;
       })
       .attr("dx", function(d) {
