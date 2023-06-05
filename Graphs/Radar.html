@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
     rowCount: 1,
     availableRowCount: 1,
     data: [
-      ["Sin informacion", "Sin informacion", 100, "BEST12.2"]
+      ["Sin datos", "Sin datos", 100, "BEST12.2"]
     ],
     columns: [
       {
@@ -445,7 +445,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // If not being rendered in iFrame (outside VA), render with sample data
   if (!inIframe()) {
-    onDataReceived(SAMPLE_MESSAGE);
+    //onDataReceived(SAMPLE_MESSAGE);
+    onDataReceived(EMPTY_MESSAGE);
   }
 
   // Listen for resize event
