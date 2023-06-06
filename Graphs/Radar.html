@@ -469,17 +469,17 @@ document.addEventListener("DOMContentLoaded", function() {
   // Take action on received data
   function onDataReceived(messageFromVA) {
     // Initialize data variables
-    //TempMessage = Object.assign({}, messageFromVA);
-    //SELECTED = va.contentUtil.initializeSelections(TempMessage);
-    //if (SELECTED.length > 0)
-    //{
+    TempMessage = JSON.parse(JSON.stringify(messageFromVA));
+    SELECTED = va.contentUtil.initializeSelections(TempMessage);
+    if (SELECTED.length > 0)
+    {
       VA_MESSAGE = messageFromVA;
       VA_RESULT_NAME = messageFromVA.resultName;
-    //}
-    //else
-    //{
-    //  VA_MESSAGE = EMPTY_MESSAGE;
-    //}
+    }
+    else
+    {
+      VA_MESSAGE = EMPTY_MESSAGE;
+    }
 
     // Validate data roles
     if (
