@@ -744,9 +744,11 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .text(function(d) {
+      .textArea(function(d) {
         return d.metric;
       })
+      .attr("width", 200)
+      .attr("height", "auto")
       .attr("data-angle", function(d) {
         return d.angle;
       })
@@ -1005,9 +1007,11 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .text(function(d) {
+      .textArea(function(d) {
         return d.metric;
       })
+      .attr("width", 200)
+      .attr("height", "auto")
       .attr("dx", function(d) {
         return d.angle == 0 || d.angle == Math.PI
           ? -this.getBBox().width / 2 + "px"
