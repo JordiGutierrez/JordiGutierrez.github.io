@@ -744,15 +744,13 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .textArea(function(d) {
+      .text(function(d) {
         return d.metric;
       })
-      .attr("width", "100")
-      .attr("height", "auto")
       .attr("data-angle", function(d) {
         return d.angle;
       })
-      /*.attr("dx", function(d) {
+      .attr("dx", function(d) {
         return d.angle == 0 || d.angle == Math.PI
           ? -this.getBBox().width / 2 + "px"
           : d.angle > 0 && d.angle < Math.PI
@@ -765,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function() {
           : d.angle > Math.PI / 2 && d.angle < (3 * Math.PI) / 2
           ? 0 + "px"
           : -this.getBBox().height + "px";
-      })*/
+      })
       .merge(MEASURE_LABELS)
       .attr("x", function(d) {
         return (RADIUS + MEASURE_LABEL_PADDING) * Math.sin(d.angle);
@@ -1007,12 +1005,10 @@ document.addEventListener("DOMContentLoaded", function() {
     MEASURE_LABELS.enter()
       .append("text")
       .classed("measure-label", true)
-      .textArea(function(d) {
+      .text(function(d) {
         return d.metric;
       })
-      .attr("width", "100")
-      .attr("height", "auto")
-      /*.attr("dx", function(d) {
+      .attr("dx", function(d) {
         return d.angle == 0 || d.angle == Math.PI
           ? -this.getBBox().width / 2 + "px"
           : d.angle > 0 && d.angle < Math.PI
@@ -1025,7 +1021,7 @@ document.addEventListener("DOMContentLoaded", function() {
           : d.angle > Math.PI / 2 && d.angle < (3 * Math.PI) / 2
           ? 0 + "px"
           : -this.getBBox().height + "px";
-      })*/
+      })
       .attr("x", function(d) {
         return (RADIUS + MEASURE_LABEL_PADDING) * Math.sin(d.angle);
       })
